@@ -1,16 +1,33 @@
-$base: #fff;
-$neutral: #000;
-$neutral-1: #2c3137;
-$neutral-2: #838a95;
-$neutral-3: #b8bcc3;
-$primary: #b9927b;
-$secondary: #ff564e;
-$accent: #2e30f5;
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+:root {
+  --base: #fff;
+  --neutral: #000;
+  --neutral-1: #2c3137;
+  --neutral-2: #838a95;
+  --neutral-3: #b8bcc3;
+  --primary: #b9927b;
+  --secondary: #ff564e;
+  --accent: #2e30f5;
+}
 
 body {
   font-family: "Poppins", sans-serif;
+}
+
+.app-container {
+  background: var(--base);
+}
+
+.dark-theme {
+  --base: #2c3137;
+  --neutral: #000;
+  --neutral-1: #b8bcc3;
+  --neutral-2: #838a95;
+  --neutral-3: #2c3137;
+  --primary: #b9927b;
+  --secondary: #ff564e;
+  --accent: #2e30f5;
 }
 
 .content-layout {
@@ -26,6 +43,24 @@ body {
   display: flex;
   align-items: center;
   margin-bottom: 70px;
+  position: relative;
+}
+
+.theme-button {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  background: var(--neutral-1);
+  color: var(--base);
+  font-size: 9px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 0 0 4px 4px;
+  strong {
+    font-weight: 600;
+  }
 }
 
 .logo {
@@ -34,19 +69,18 @@ body {
 
 .search-input {
   min-width: 300px;
-  border: 1px solid $neutral-3;
-  background: $base;
-  color: $neutral-1;
+  border: 1px solid var(--neutral-3);
+  color: var(--neutral-1);
   padding: 10px;
 }
 
 .search-button {
   border: none;
-  background: $accent;
+  background: var(--accent);
   padding: 7px;
   font-size: 0;
   cursor: pointer;
-  color: $base;
+  color: var(--base);
 }
 
 .search-form {
@@ -56,14 +90,14 @@ body {
 }
 
 .watchlist {
-  color: $neutral-1;
+  color: var(--neutral-1);
   text-decoration: none;
-  border-bottom: 2px solid $secondary;
+  border-bottom: 2px solid var(--secondary);
   cursor: pointer;
 }
 
 .watchlist:hover {
-  border-bottom: 2px solid $neutral;
+  border-bottom: 2px solid var(--neutral);
 }
 
 //END HEADER
@@ -73,12 +107,12 @@ body {
   font-size: 60px;
   line-height: 50px;
   font-weight: 600;
-  color: $neutral-1;
+  color: var(--neutral-1);
   margin-bottom: 50px;
 }
 
 .submenu {
-  color: $neutral-2;
+  color: var(--neutral-2);
   font-size: 10px;
   line-height: 24px;
   text-transform: uppercase;
@@ -86,7 +120,7 @@ body {
   margin: 0 0 10px 0;
   label {
     font-size: 11px;
-    color: $neutral-1;
+    color: var(--neutral-1);
     font-weight: 600;
     cursor: pointer;
   }
@@ -105,7 +139,7 @@ body {
     z-index: -100;
     visibility: hidden;
     &:checked + label:after {
-      background: $accent;
+      background: var(--accent);
       width: 100%;
     }
   }
@@ -120,7 +154,7 @@ body {
       bottom: -4px;
       border-radius: 2px;
       left: 0;
-      background: $neutral-3;
+      background: var(--neutral-3);
       transition: all 0.3s ease;
     }
     &:hover:after {
@@ -142,7 +176,7 @@ body {
   select {
     min-width: 171px;
     padding: 5px;
-    border: 1px solid $neutral-3;
+    border: 1px solid var(--neutral-3);
     cursor: pointer;
   }
 }
@@ -162,15 +196,15 @@ body {
   position: relative;
   font-size: 11px;
   line-height: 14px;
-  color: $neutral-1;
+  color: var(--neutral-1);
   background: transparent;
   border: none;
   text-transform: uppercase;
   letter-spacing: 3px;
   cursor: pointer;
-  border-bottom: 1px dashed $neutral-2;
+  border-bottom: 1px dashed var(--neutral-2);
   &:hover {
-    border-bottom: 1px solid $neutral-1;
+    border-bottom: 1px solid var(--neutral-1);
   }
   &:before {
     content: "x";
@@ -191,7 +225,7 @@ body {
 .cartoon-item {
   max-width: 280px;
   text-transform: uppercase;
-  color: $neutral-1;
+  color: var(--neutral-1);
   line-height: 14px;
   position: relative;
 }
@@ -219,7 +253,7 @@ body {
   transform-origin: 0 100%;
   left: 0;
   bottom: 0;
-  color: $neutral-1;
+  color: var(--neutral-1);
   pointer-events: none;
 }
 
@@ -247,21 +281,21 @@ body {
   font-size: 50px;
   line-height: 50px;
   font-weight: 600;
-  color: $neutral-1;
+  color: var(--neutral-1);
   margin-bottom: 25px;
 }
 
 .detail-table {
-  border: 2px solid $neutral-1;
+  border: 2px solid var(--neutral-1);
   font-size: 11px;
   line-height: 16px;
   text-transform: uppercase;
-  color: $neutral-1;
+  color: var(--neutral-1);
   text-align: center;
   letter-spacing: 3px;
   margin-bottom: 25px;
   span {
-    color: $primary;
+    color: var(--primary);
     margin-right: 5px;
   }
   td {
@@ -270,11 +304,11 @@ body {
 }
 
 .table-title {
-  border-bottom: 1px solid $neutral-1;
+  border-bottom: 1px solid var(--neutral-1);
 }
 
 .info-cell {
-  border-right: 1px solid $neutral-1;
+  border-right: 1px solid var(--neutral-1);
   &:last-child {
     border: none;
   }
@@ -286,23 +320,23 @@ body {
   display: flex;
   h3 {
     text-transform: uppercase;
-    color: $primary;
+    color: var(--primary);
     letter-spacing: 3px;
     margin-right: 5px;
   }
   a {
     text-decoration: none;
-    color: $neutral-1;
-    border-bottom: 1px solid $neutral-3;
+    color: var(--neutral-1);
+    border-bottom: 1px solid var(--neutral-3);
     &:hover {
-      color: $primary;
+      color: var(--primary);
     }
   }
 }
 
 .footer {
-  background: $neutral-1;
-  color: $base;
+  background: var(--neutral-1);
+  color: var(--base);
   padding: 20px 0;
   margin-top: 100px;
 }
@@ -319,16 +353,16 @@ body {
     line-height: 16px;
     letter-spacing: 3px;
     font-weight: 600;
-    color: $base;
+    color: var(--base);
     text-transform: uppercase;
     margin-bottom: 10px;
   }
   a {
-    color: $base;
+    color: var(--base);
     vertical-align: middle;
     margin-right: 10px;
     &:hover {
-      color: $secondary;
+      color: var(--secondary);
     }
     &:last-child {
       margin: 0;

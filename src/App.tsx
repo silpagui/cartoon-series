@@ -3,7 +3,7 @@ import "./App.scss";
 
 export function App() {
   return (
-    <div className="app-container ">
+    <div className="app-container">
       <header className="header content-layout">
         <img src="http://placekitten.com/100/100" alt="Logo" className="logo" />
         <form className="search-form">
@@ -35,6 +35,9 @@ export function App() {
             My Watchlist
           </a>
         </nav>
+        <button className="theme-button" type="button">
+          Dark Mode: <strong>OFF</strong>
+        </button>
       </header>
       <div className="page-content content-layout">
         <h1 className="page-title">Cartoons</h1>
@@ -97,7 +100,21 @@ export function App() {
             </a>
             <h3 className="cartoon-item__title">Bob Esponja</h3>
             <p className="cartoon-item__year">1991</p>
-            <button className="cartoon-item__fav">Add/Remove</button>
+            <button className="cartoon-item__fav">
+              <svg
+                width="20px"
+                height="20px"
+                version="1.1"
+                viewBox="0 0 752 752"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m474.66 178.68c32.695 0 59.199 26.504 59.199 59.199v315.72c0 7.0352-3.7461 13.535-9.832 17.066-6.082 3.5312-13.586 3.5547-19.691 0.066406l-128.34-73.336-128.34 73.336c-6.1094 3.4883-13.609 3.4648-19.695-0.066406-6.082-3.5312-9.8281-10.031-9.8281-17.066v-315.72c0-32.695 26.504-59.199 59.199-59.199zm-177.59 157.86c0-10.898 8.8359-19.73 19.734-19.73h39.465v-39.465c0-10.898 8.832-19.734 19.73-19.734s19.734 8.8359 19.734 19.734v39.465h39.465c10.898 0 19.73 8.832 19.73 19.73 0 10.898-8.832 19.734-19.73 19.734h-39.465v39.465c0 10.898-8.8359 19.73-19.734 19.73s-19.73-8.832-19.73-19.73v-39.465h-39.465c-10.898 0-19.734-8.8359-19.734-19.734z"
+                  fill-rule="evenodd"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
           </li>
         </ul>
 
@@ -106,7 +123,21 @@ export function App() {
           <div className="item-details">
             <div className="detail-title">
               <h2>Bob Esponja</h2>
-              <button>Add/Remove</button>
+              <button>
+                <svg
+                  width="20px"
+                  height="20px"
+                  version="1.1"
+                  viewBox="0 0 752 752"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m533.86 237.88c0-32.695-26.504-59.199-59.199-59.199h-197.32c-32.695 0-59.199 26.504-59.199 59.199v315.72c0 7.0352 3.7461 13.535 9.8281 17.066 6.0859 3.5312 13.586 3.5547 19.695 0.066406l128.34-73.336 128.34 73.336c6.1055 3.4883 13.609 3.4648 19.691-0.066406 6.0859-3.5312 9.832-10.031 9.832-17.066zm-217.06 78.93c-10.898 0-19.734 8.832-19.734 19.73 0 10.898 8.8359 19.734 19.734 19.734h118.39c10.898 0 19.73-8.8359 19.73-19.734 0-10.898-8.832-19.73-19.73-19.73z"
+                    fill-rule="evenodd"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
             </div>
             <table className="detail-table">
               <tbody>

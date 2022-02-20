@@ -1,15 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export function CartoonList() {
   return (
     <ul className="cartoon-list">
       <li className="cartoon-item">
         <span className="cartoon-item__episode">episodes: 232</span>
-
-        <a href="#23" className="cartoon-item__cover">
+        <Link to="/id" className="cartoon-item__cover">
           <span className="cartoon-item__cover__rating">rating: TV-PG</span>
           <img src="http://placekitten.com/300/400" alt="cover" />
-        </a>
+        </Link>
         <h3 className="cartoon-item__title">Bob Esponja</h3>
         <p className="cartoon-item__year">1991</p>
         <button className="cartoon-item__fav">

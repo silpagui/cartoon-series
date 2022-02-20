@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export function Nav() {
   return (
     <nav>
-      <a href="#1" className="watchlist">
+      <Link to="/watchlist" className="watchlist">
         My Watchlist
-      </a>
+      </Link>
     </nav>
   );
 }

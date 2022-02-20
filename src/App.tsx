@@ -1,11 +1,11 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Header } from "./components/Header/Header.component";
 import { Home } from "./components/Home/Home.component";
 import { Detail } from "./components/Detail/Detail.component";
 import { Footer } from "./components/Footer/Footer.component";
 import { WatchList } from "./components/WatchList/WatchList.component";
 import "./App.scss";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export function App() {
   return (

@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { sortByAction } from "../../store/actions/cartoons.actions";
 

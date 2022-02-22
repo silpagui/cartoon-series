@@ -324,6 +324,12 @@ body {
 }
 
 //END LIST
+.back-link {
+  color: var(--neutral-1);
+  &:hover {
+    color: var(--secondary);
+  }
+}
 
 .detail {
   display: flex;

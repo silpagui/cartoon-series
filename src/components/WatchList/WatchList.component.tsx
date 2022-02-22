@@ -5,7 +5,7 @@ export function WatchList() {
   return (
     <>
       <h1 className="page-title">Cartoons in my Watchlist</h1>
-      <CartoonList />
+      <CartoonList favorites={true} />
     </>
   );
 }

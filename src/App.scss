@@ -64,7 +64,11 @@ body {
 }
 
 .logo-link {
+  display: block;
   margin: 0 auto 0 0;
+  background: var(--secondary);
+  padding: 12px;
+  border-radius: 50px;
 }
 
 .search-input {
@@ -92,12 +96,21 @@ body {
 .watchlist {
   color: var(--neutral-1);
   text-decoration: none;
+  font-weight: 600;
   border-bottom: 2px solid var(--secondary);
   cursor: pointer;
 }
 
 .watchlist:hover {
   border-bottom: 2px solid var(--neutral);
+}
+
+.watchlist-icon {
+  margin-right: 5px;
+  color: var(--primary);
+  &:hover {
+    color: var(--secondary);
+  }
 }
 
 //END HEADER
@@ -228,20 +241,26 @@ body {
   color: var(--neutral-1);
   line-height: 14px;
   position: relative;
+  margin: 0 25px 30px 0;
 }
 
 .cartoon-item__episode {
-  font-size: 8px;
+  font-size: 9px;
 }
 
 .cartoon-item__cover {
   display: block;
   position: relative;
   margin: 0 0 10px 0;
+  filter: grayscale(0);
+  transition: all ease 0.3s;
   img {
     display: block;
     width: 100%;
     height: auto;
+  }
+  &:hover {
+    filter: grayscale(1);
   }
 }
 
@@ -273,9 +292,47 @@ body {
   position: absolute;
   right: 3px;
   top: 20px;
+  padding: 4px 4px 0 4px;
+  cursor: pointer;
+  background: var(--base);
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.4);
+  svg {
+    transform: scale(2);
+    color: var(--accent);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+  }
+  &:hover {
+    svg {
+      opacity: 1;
+    }
+  }
+}
+
+.cartoon-item__fav--remove {
+  svg {
+    color: var(--secondary);
+  }
+}
+
+.error-message {
+  font-size: 30px;
+  line-height: 35px;
+  font-weight: 400;
 }
 
 //END LIST
+
+.detail {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.detail-image {
+  position: relative;
+}
 
 .detail-title {
   font-size: 50px;
@@ -334,6 +391,10 @@ body {
   }
 }
 
+.genre {
+  margin-left: 40px;
+}
+
 .footer {
   background: var(--neutral-1);
   color: var(--base);
@@ -349,9 +410,9 @@ body {
 
 .social-media {
   h4 {
-    font-size: 11px;
+    font-size: 13px;
     line-height: 16px;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     font-weight: 600;
     color: var(--base);
     text-transform: uppercase;
@@ -360,7 +421,7 @@ body {
   a {
     color: var(--base);
     vertical-align: middle;
-    margin-right: 10px;
+    margin-right: 15px;
     &:hover {
       color: var(--secondary);
     }
@@ -368,7 +429,7 @@ body {
       margin: 0;
     }
     svg {
-      width: 30px;
+      width: 40px;
       height: auto;
     }
   }

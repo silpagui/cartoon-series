@@ -1,44 +1,46 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { RootReducer } from "../../store/store";
+import { ButtonFav } from "../ButtonFav/ButtonFav.component";
 
 export function Detail() {
+  let { id } = useParams();
+  const idSelected = Number(id);
+
+  const cartoons = useSelector((store: RootReducer) => store.cartoons.data);
+
+  const cartoon = cartoons.find((cartoon) => cartoon.id === idSelected);
+
   return (
     <div className="detail">
-      <img src="http://placekitten.com/300/400" alt="cover" />
+      <div className="detail-image">
+        <ButtonFav id={idSelected} />
+        <img src={cartoon?.image} alt={`${cartoon?.title} cover`} width="300" />
+      </div>
       <div className="item-details">
         <div className="detail-title">
-          <h2>Bob Esponja</h2>
-          <button>
-            <svg
-              width="20px"
-              height="20px"
-              version="1.1"
-              viewBox="0 0 752 752"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="m533.86 237.88c0-32.695-26.504-59.199-59.199-59.199h-197.32c-32.695 0-59.199 26.504-59.199 59.199v315.72c0 7.0352 3.7461 13.535 9.8281 17.066 6.0859 3.5312 13.586 3.5547 19.695 0.066406l128.34-73.336 128.34 73.336c6.1055 3.4883 13.609 3.4648 19.691-0.066406 6.0859-3.5312 9.832-10.031 9.832-17.066zm-217.06 78.93c-10.898 0-19.734 8.832-19.734 19.73 0 10.898 8.8359 19.734 19.734 19.734h118.39c10.898 0 19.73-8.8359 19.73-19.734 0-10.898-8.832-19.73-19.73-19.73z"
-                fill-rule="evenodd"
-                fill="currentColor"
-              />
-            </svg>
-          </button>
+          <h2>{cartoon?.title}</h2>
         </div>
         <table className="detail-table">
           <tbody>
             <tr>
               <td colSpan={3} className="table-title">
-                <span>Original Title:</span> Title
+                <span>Original Title:</span> {cartoon?.title}
               </td>
             </tr>
             <tr>
               <td className="info-cell">
-                <span>rating:</span>TV-PG
+                <span>rating:</span>
+                {cartoon?.rating}
               </td>
               <td className="info-cell">
-                <span>Year:</span>1990
+                <span>Year:</span>
+                {cartoon?.year}
               </td>
               <td className="info-cell">
-                <span>Episodes:</span>324
+                <span>Episodes:</span>
+                {cartoon?.episodes}
               </td>
             </tr>
           </tbody>
@@ -47,7 +49,17 @@ export function Detail() {
           <h3>Creator:</h3>
           <ul>
             <li>
-              <a href="#2">Pepito</a>
+              <a href={`https://www.google.com/search?q=${cartoon?.creator}`}>
+                {cartoon?.creator}
+              </a>
+            </li>
+          </ul>
+          <h3 className="genre">Genre:</h3>
+          <ul>
+            <li>
+              <a href={`https://www.google.com/search?q=${cartoon?.genre}`}>
+                {cartoon?.genre}
+              </a>
             </li>
           </ul>
         </div>

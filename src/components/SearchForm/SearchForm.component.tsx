@@ -1,6 +1,17 @@
-import React from "react";
+import React, { FormEvent } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { searchInputOnChange } from "../../store/actions/cartoons.actions";
+import { RootReducer } from "../../store/store";
 
 export function SearchForm() {
+  const dispatch = useDispatch();
+  const searchInput = useSelector(
+    (store: RootReducer) => store.cartoons.searchValue
+  );
+
+  function handleOnChangeInput(event: FormEvent<HTMLInputElement>) {
+    dispatch(searchInputOnChange(event.currentTarget.value));
+  }
   return (
     <form className="search-form">
       <input
@@ -9,6 +20,8 @@ export function SearchForm() {
         name="search"
         id="search"
         placeholder="Search title here"
+        onChange={handleOnChangeInput}
+        value={searchInput}
       />
       <button className="search-button">
         <svg

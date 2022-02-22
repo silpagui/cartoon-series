@@ -1,33 +1,94 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-export function CartoonList() {
+import { RootReducer } from "../../store/store";
+import { ButtonFav } from "../ButtonFav/ButtonFav.component";
+
+export function CartoonList({ favorites }: { favorites?: boolean }) {
+  const filters = useSelector((store: RootReducer) => store.cartoons.filter);
+
+  const cartoonList = useSelector((store: RootReducer) => {
+    const listCopy = [...store.cartoons.data];
+    if (store.cartoons.sortBy === "year") {
+      return listCopy.sort((a, b) => {
+        if (a.year < b.year) {
+          return 1;
+        }
+        if (a.year > b.year) {
+          return -1;
+        }
+        return 0;
+      });
+    } else if (store.cartoons.sortBy === "title") {
+      return listCopy.sort((a, b) => {
+        if (a.title > b.title) {
+          return 1;
+        }
+        if (a.title < b.title) {
+          return -1;
+        }
+        return 0;
+      });
+    } else {
+      return store.cartoons.data;
+    }
+  });
+
+  const searchInput = useSelector(
+    (store: RootReducer) => store.cartoons.searchValue
+  );
+
+  const watchlist = useSelector(
+    (store: RootReducer) => store.watchlist.cartoons
+  );
+
+  const watchlistFiltered = cartoonList.filter((cartoon) =>
+    watchlist.find((id) => id === cartoon.id)
+  );
+
+  const search = searchInput.toLocaleLowerCase();
+
+  const filteredCartoons = cartoonList
+    .filter(
+      (cartoon) =>
+        filters.creator === "" || cartoon.creator.includes(filters.creator)
+    )
+    .filter(
+      (cartoon) => filters.genre === "" || cartoon.genre.includes(filters.genre)
+    )
+    .filter((cartoon) => cartoon.rating.includes(filters.rating));
+
+  const listToBeMapped = favorites
+    ? watchlistFiltered
+    : filteredCartoons.filter((cartoon) =>
+        cartoon.title.toLocaleLowerCase().includes(search)
+      );
+
   return (
     <ul className="cartoon-list">
-      <li className="cartoon-item">
-        <span className="cartoon-item__episode">episodes: 232</span>
-        <Link to="/id" className="cartoon-item__cover">
-          <span className="cartoon-item__cover__rating">rating: TV-PG</span>
-          <img src="http://placekitten.com/300/400" alt="cover" />
-        </Link>
-        <h3 className="cartoon-item__title">Bob Esponja</h3>
-        <p className="cartoon-item__year">1991</p>
-        <button className="cartoon-item__fav">
-          <svg
-            width="20px"
-            height="20px"
-            version="1.1"
-            viewBox="0 0 752 752"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="m474.66 178.68c32.695 0 59.199 26.504 59.199 59.199v315.72c0 7.0352-3.7461 13.535-9.832 17.066-6.082 3.5312-13.586 3.5547-19.691 0.066406l-128.34-73.336-128.34 73.336c-6.1094 3.4883-13.609 3.4648-19.695-0.066406-6.082-3.5312-9.8281-10.031-9.8281-17.066v-315.72c0-32.695 26.504-59.199 59.199-59.199zm-177.59 157.86c0-10.898 8.8359-19.73 19.734-19.73h39.465v-39.465c0-10.898 8.832-19.734 19.73-19.734s19.734 8.8359 19.734 19.734v39.465h39.465c10.898 0 19.73 8.832 19.73 19.73 0 10.898-8.832 19.734-19.73 19.734h-39.465v39.465c0 10.898-8.8359 19.73-19.734 19.73s-19.73-8.832-19.73-19.73v-39.465h-39.465c-10.898 0-19.734-8.8359-19.734-19.734z"
-              fill-rule="evenodd"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
-      </li>
+      {listToBeMapped.length ? (
+        listToBeMapped.map((cartoon) => {
+          return (
+            <li className="cartoon-item" key={cartoon.id}>
+              <span className="cartoon-item__episode">
+                episodes: {cartoon.episodes}
+              </span>
+              <Link to={`/${cartoon.id}`} className="cartoon-item__cover">
+                <span className="cartoon-item__cover__rating">
+                  rating: {cartoon.rating}
+                </span>
+                <img src={cartoon.image} alt={`cover ${cartoon.title}`} />
+              </Link>
+              <h3 className="cartoon-item__title">{cartoon.title}</h3>
+              <p className="cartoon-item__year">{cartoon.year}</p>
+              <ButtonFav id={cartoon.id} />
+            </li>
+          );
+        })
+      ) : (
+        <h3 className="error-message">There are not cartoon ):</h3>
+      )}
     </ul>
   );
 }

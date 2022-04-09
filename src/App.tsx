@@ -23,7 +23,7 @@ export function App() {
 
   return (
     <div className={`app-container ${darkMode ? "dark-theme" : ""}`}>
-      <BrowserRouter>
+      <BrowserRouter basename="/cartoon-series">
         <Header />
         <div className="page-content content-layout">
           <Routes>

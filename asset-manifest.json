@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cartoon-series/static/css/main.9455ff17.css",
+    "main.js": "/cartoon-series/static/js/main.dc9477bf.js",
+    "index.html": "/cartoon-series/index.html",
+    "main.9455ff17.css.map": "/cartoon-series/static/css/main.9455ff17.css.map",
+    "main.dc9477bf.js.map": "/cartoon-series/static/js/main.dc9477bf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9455ff17.css",
+    "static/js/main.dc9477bf.js"
+  ]
+}
